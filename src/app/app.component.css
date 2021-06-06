@@ -1,0 +1,16 @@
+.fixed-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .5);
+    margin: 2.5em 0;
+}
+
+::ng-deep .p-menu {
+    padding: 0.25rem 0;
+    background: #ffffff;
+    color: #495057;
+    border: 0;
+    width: auto;
+}
+

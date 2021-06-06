@@ -1,0 +1,14 @@
+<nav class="t-header">
+
+    <div class="t-header-brand-wrapper">
+        <a href="index.html">
+            IAM.
+        </a>
+    </div>
+    <div class="t-header-content-wrapper">
+        <div class="align-right">
+            <button type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)"></button>
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        </div>
+    </div>
+</nav>

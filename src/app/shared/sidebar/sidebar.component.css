@@ -1,0 +1,134 @@
+.toggle-sidebar {
+    position: absolute;
+    cursor: pointer;
+    right: -15px;
+    top: 55px;
+}
+
+.logo-block {
+    text-align: center;
+    padding: 30px;
+}
+
+aside {
+    padding-top: 51px;
+    position: relative;
+}
+
+ul.global-menu {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.global-menu li {
+    text-decoration: none;
+    color: #2e78b1;
+    background: #ffffff;
+    height: 51px;
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+ul.global-menu li a span {
+    font-size: 14px;
+    color: #85929e;
+    font-family: "OpenSans Regular", sans-serif;
+    vertical-align: super;
+}
+
+ul.global-menu svg {
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 14px;
+    width: 30px;
+}
+
+ul.global-menu svg .cls-1 {
+    fill: #2e78b1;
+}
+
+ul.global-menu li:hover,
+ul.global-menu li:focus,
+ul.global-menu li.active {
+    background: #e1f3f1;
+}
+
+ul.global-menu li:hover a {
+    color: #ffffff;
+}
+
+ul.global-menu li:hover svg .cls-border {
+    fill: none;
+    stroke: #6fc4bd;
+}
+
+ul.global-menu li:hover svg .cls-bg {
+    fill: #6fc4bd;
+}
+
+.module-active {
+    background: #e1f3f1 !important;
+}
+
+.module-active span {
+    color: #6fc4bd !important;
+    font-family: 'OpenSans Bold', sans-serif;
+}
+
+.module-active svg .cls-border {
+    fill: none;
+    stroke: #6fc4bd;
+}
+
+.module-active svg .cls-bg {
+    fill: #6fc4bd;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+.main-aside {
+    margin-top: 20px;
+    background: #fff;
+    height: 99.8vh;
+    box-shadow: 1px 2px 4px 1px #ffffff7a;
+}
+
+.plus-icon {
+    cursor: copy;
+    color: #85929e;
+    font-size: medium;
+    position: absolute;
+    right: 35px;
+    padding-top: 15px;
+}
+
+
+::ng-deep .ui-panelmenu .ui-menuitem-text {
+    vertical-align: middle;
+    color: #0d0d0d;
+    font-weight: 500;
+    font-style: normal;
+}
+
+::ng-deep .ui-panelmenu .ui-menuitem-link {
+    margin-left: 3.5em;
+}
+
+::ng-deep .pi-pw {
+    font-size: 23px;
+}
+
+::ng-deep .ui-menuitem-icon {
+    color: #3498db;
+}
+
+::ng-deep .ui-panelmenu-panel {
+    margin: .5em 0;
+}
+
+.menu-container {
+    margin: 3em 0;
+}
