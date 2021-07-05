@@ -1,0 +1,22 @@
+<div class="p-grid p-ai-center vertical-container">
+    <div class="p-col-6 p-offset-3 mt-5">
+        <p-card class="p-shadow-24">
+            <ng-template pTemplate="header">
+                <h1 class="login">WELCOME TO IAM</h1>
+            </ng-template>
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="email">Email</label>
+                    <input [(ngModel)]="user.email" id="email" type="text" pInputText>
+                </div>
+                <div class="p-field">
+                    <label for="password">Password</label>
+                    <input [(ngModel)]="user.password" id="password" type="password" pInputText>
+                </div>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button (onClick)="authenticate()" class="center" label="Login" ></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div>

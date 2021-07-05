@@ -17,30 +17,39 @@ import {ButtonModule} from 'primeng/button';
 import {AboutComponent} from './static/about/about.component';
 import {TermsAndConditionsComponent} from './static/terms-and-conditions/terms-and-conditions.component';
 import {SupportComponent} from './static/support/support.component';
+import {LoginComponent} from './authentication/login/login.component';
+import {CardModule} from 'primeng/card';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    HomeComponent,
-    TopbarComponent,
-    FooterComponent,
-    AboutComponent,
-    TermsAndConditionsComponent,
-    SupportComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    SidebarModule,
-    InputTextModule,
-    PanelMenuModule,
-    ScrollPanelModule,
-    MenuModule,
-    ButtonModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SidebarComponent,
+        HomeComponent,
+        TopbarComponent,
+        FooterComponent,
+        AboutComponent,
+        TermsAndConditionsComponent,
+        SupportComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SidebarModule,
+        InputTextModule,
+        PanelMenuModule,
+        ScrollPanelModule,
+        MenuModule,
+        ButtonModule,
+        CardModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

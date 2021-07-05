@@ -1,12 +1,18 @@
-<div class="header-fixed mt-5">
-    <app-topbar></app-topbar>
-</div>
-<div class="page-body">
-    <app-sidebar></app-sidebar>
-    <div class="page-content-wrapper">
-        <p-scrollPanel>
-            <router-outlet></router-outlet>
-        </p-scrollPanel>
-        <app-footer></app-footer>
+<ng-container *ngIf="loggedInUser">
+    <div class="header-fixed mt-5">
+        <app-topbar></app-topbar>
     </div>
-</div>
+    <div class="page-body">
+        <app-sidebar></app-sidebar>
+        <div class="page-content-wrapper">
+            <p-scrollPanel>
+                <router-outlet></router-outlet>
+            </p-scrollPanel>
+            <app-footer></app-footer>
+        </div>
+    </div>
+
+</ng-container>
+<ng-container *ngIf="!loggedInUser">
+    <router-outlet></router-outlet>
+</ng-container>
