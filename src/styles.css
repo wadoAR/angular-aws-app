@@ -14624,7 +14624,7 @@ table.info-table tr th.actions {
 .t-header {
     display: flex;
     height: 48px;
-    background: #ffffff;
+    background: #e9ecef;
     z-index: 100;
 }
 
@@ -15348,6 +15348,15 @@ footer ul li a {
     color: #004679;
 }
 
+.expanded-row {
+    color: #b5b5b5;
+    padding: 25px 5px;
+}
 
+.p-datatable .p-datatable-tbody > tr > td > div > p-tag > span > span {
+    font-size: 13px;
+}
 
-
+::ng-deep .pi {
+    font-size: 1.4em !important;
+}

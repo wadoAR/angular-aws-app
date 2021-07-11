@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PrimeNGConfig} from 'primeng/api';
+import {FilterMatchMode, PrimeNGConfig} from 'primeng/api';
 import {AuthenticationService} from './authentication/service/authentication.service';
 
 @Component({
@@ -18,6 +18,21 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.primengConfig.ripple = true;
         this.authenticationService.loggedInUser.subscribe(loggedInUser => this.loggedInUser = loggedInUser);
+        this.primengConfig.filterMatchModeOptions = {
+            text: [
+                FilterMatchMode.CONTAINS
+            ],
+            numeric: [
+                FilterMatchMode.EQUALS,
+                FilterMatchMode.LESS_THAN,
+                FilterMatchMode.GREATER_THAN,
+            ],
+            date: [
+                FilterMatchMode.DATE_IS,
+                FilterMatchMode.DATE_BEFORE,
+                FilterMatchMode.DATE_AFTER
+            ]
+        };
     }
 
 }

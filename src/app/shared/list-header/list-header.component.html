@@ -1,0 +1,17 @@
+<p-toolbar styleClass="toolbar-fixed p-3">
+    <div class="ui-toolbar-group-left">
+            <h2 class="module-name">{{moduleName}}</h2>
+    </div>
+    <div *ngIf="displayButton" class="ui-toolbar-group-right">
+        <button (click)="add()"
+                class="add-btn"
+                label="+ {{buttonLabel}}"
+                pButton>
+        </button>
+        <div class="add-btn-mobile" (click)="add()">
+            <i class="fa fa-plus"></i>
+        </div>
+    </div>
+</p-toolbar>
+
+

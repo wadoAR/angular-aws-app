@@ -1,0 +1,43 @@
+::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    text-align: left;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    padding: 1rem 1rem;
+}
+
+.employee-badge {
+    border-radius: 9px;
+    padding: .55em .5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.status-PENDING {
+    background-color: #f39c12;
+    color: #ffffff;
+}
+
+.status-ACTIVE {
+    background-color: #2ecc71;
+    color: #ffffff;
+}
+
+.status-SUSPENDED {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+.status-DEACTIVATED {
+    background-color: #c0392b;
+    color: #ffffff;
+}
+
+.no-permission {
+    font-size: 13px;
+    color: #505050;
+}
+
+body > app-root > div.page-body.ng-star-inserted > div > p-scrollpanel > div > div.p-scrollpanel-wrapper > div > app-employees > p-table > div > div > table > tbody > tr:nth-child(2) > td > div > div > p-tag:nth-child(2) > span > span {
+    font-size: 13px;
+}
+

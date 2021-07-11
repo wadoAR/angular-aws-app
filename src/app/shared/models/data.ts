@@ -5,27 +5,28 @@ export class Data {
             label: 'Navigate',
             items: [
                 {
-            label: 'Home',
-            icon: 'pi pi-pw pi-home',
+                    label: 'Home',
+                    icon: 'pi pi-pw pi-home',
                     routerLink: ['/home']
-        },
-        {
-            label: 'Menu 2',
-            icon: 'pi pi-pw pi-sort-numeric-down-alt'
-        },
-        {
-            label: 'Menu 3',
-            icon: 'pi pi-pw pi-sitemap'
-        },
-        {
-            label: 'Menu 4',
-            icon: 'pi pi-pw pi-comments'
-        },
-        {
-            label: 'Menu 5',
-            icon: 'pi pi-pw pi-user-edit'
-        }
-        ]
+                },
+                {
+                    label: 'Employees',
+                    icon: 'pi pi-pw pi-user-edit',
+                    routerLink: ['/employees']
+                },
+                {
+                    label: 'Menu 3',
+                    icon: 'pi pi-pw pi-sitemap'
+                },
+                {
+                    label: 'Menu 4',
+                    icon: 'pi pi-pw pi-comments'
+                },
+                {
+                    label: 'Menu 5',
+                    icon: 'pi pi-pw pi-sort-numeric-down-alt'
+                }
+            ]
         },
         {
             label: 'Static',
@@ -50,13 +51,20 @@ export class Data {
     ];
 
     static readonly topBarMenu = [
-                {
-                    label: 'Manage profile',
-                    icon: 'pi pi-fw pi-user-edit'
-                },
-                {
-                    label: 'Disconnect',
-                    icon: 'pi pi-fw pi-power-off'
-                }
+        {
+            label: 'Manage profile',
+            icon: 'pi pi-fw pi-user-edit'
+        },
+        {
+            label: 'Disconnect',
+            icon: 'pi pi-fw pi-power-off'
+        }
+    ];
+
+    static readonly statuses = [
+        {label: 'Pending', value: 'PENDING'},
+        {label: 'Qualified', value: 'ACTIVE'},
+        {label: 'Suspended', value: 'SUSPENDED'},
+        {label: 'Deactivated', value: 'DEACTIVATED'}
     ];
 }

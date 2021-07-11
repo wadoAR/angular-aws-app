@@ -20,7 +20,17 @@ import {SupportComponent} from './static/support/support.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {CardModule} from 'primeng/card';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from './utils/auth-guard.service';
+import { EmployeesComponent } from './employees/employees/employees.component';
+import { ListHeaderComponent } from './shared/list-header/list-header.component';
+import {ToolbarModule} from 'primeng/toolbar';
+import {TableModule} from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
+import {RippleModule} from 'primeng/ripple';
+import {TagModule} from 'primeng/tag';
+import {DialogModule} from 'primeng/dialog';
+import {JwtInterceptor} from './utils/jwt.interceptor';
 
 @NgModule({
     declarations: [
@@ -32,7 +42,9 @@ import {HttpClientModule} from '@angular/common/http';
         AboutComponent,
         TermsAndConditionsComponent,
         SupportComponent,
-        LoginComponent
+        LoginComponent,
+        EmployeesComponent,
+        ListHeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -46,9 +58,16 @@ import {HttpClientModule} from '@angular/common/http';
         ButtonModule,
         CardModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        ToolbarModule,
+        TableModule,
+        DropdownModule,
+        RippleModule,
+        TagModule,
+        DialogModule
     ],
-    providers: [],
+    providers: [AuthGuard,
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
     bootstrap: [AppComponent]
 })
 export class AppModule {

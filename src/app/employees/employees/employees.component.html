@@ -1,0 +1,202 @@
+<app-list-header [moduleName]="'Employees'"
+                 [buttonLabel]="'Add Employee'"
+                 [displayButton]="true"
+                 (addEvent)="addEmployee()">
+</app-list-header>
+<p-table [value]="employees" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} employees"
+         dataKey="id">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="employee.fullName">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Fullname
+                    <p-sortIcon field="employee.fullName"></p-sortIcon>
+                    <p-columnFilter type="text"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    matchMode="in"
+                                    field="employee.fullName"
+                                    display="menu"
+                                    class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="employee.email">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Email
+                    <p-sortIcon field="employee.email"></p-sortIcon>
+                    <p-columnFilter type="text" field="employee.email"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    display="menu"
+                                    class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="employee.role">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Role
+                    <p-sortIcon field="employee.role"></p-sortIcon>
+                    <p-columnFilter type="text" field="employee.role"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    display="menu"
+                                    class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="employee.status">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Status
+                    <p-sortIcon field="employee.status"></p-sortIcon>
+                    <p-columnFilter field="status"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    display="menu" class="p-ml-auto">
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                            <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                        placeholder="Any">
+                                <ng-template let-option pTemplate="item">
+                                    <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                </ng-template>
+                            </p-dropdown>
+                        </ng-template>
+                    </p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="employee.startDate">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Start date
+                    <p-sortIcon field="employee.startDate"></p-sortIcon>
+                    <p-columnFilter type="date" field="employee.startDate"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    display="menu"
+                                    class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="employee.createdDate">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Creation date
+                    <p-sortIcon field="employee.createdDate"></p-sortIcon>
+                    <p-columnFilter type="date" field="employee.createdDate" display="menu"
+                                    [showMatchModes]="false"
+                                    [showOperator]="false"
+                                    [showAddButton]="false"
+                                    class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th style="width: 3rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple
+                        [pRowToggler]="employee"
+                        class="p-button-text p-button-rounded p-button-plain p-0">
+                    <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-eye'" style="font-size: 1.4rem"></i>
+                </button>
+            </td>
+            <td>{{employee.fullName}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.role}}</td>
+            <td>
+                <span [class]="'employee-badge status-' + employee.status">{{employee.status}}</span>
+            </td>
+            <td>{{employee.startDate | date: 'MM/dd/yyyy'}}</td>
+            <td>{{employee.createdDate | date: 'MM/dd/yyyy'}}</td>
+            <td>
+                <button type="button" pButton pRipple
+                        class="p-button-text p-button-rounded p-button-plain p-0"
+                        (click)="editEmployee()">
+                    <i class="pi pi-cog" style="font-size: 1.4rem"></i>
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+
+
+    <ng-template pTemplate="rowexpansion" let-employee>
+        <tr>
+            <td colspan="7">
+                <div class="p-col-3"
+                     *ngIf="employee.departmentPermissions.length == 0
+                                && employee.devicePermissions.length == 0
+                                && employee.softwarePermissions.length == 0
+                                && employee.toolPermissions.length == 0">
+                    <span class="no-permission">No permissions were given to {{employee.fullName}}.</span>
+                </div>
+
+                <div *ngIf="employee.departmentPermissions.length > 0"
+                     class="p-col-3">
+                    <h5 class="expanded-row">Departments</h5>
+                    <ng-container *ngFor="let department of employee.departmentPermissions">
+                        <p-tag class="p-2" value="{{department}}"></p-tag>
+                    </ng-container>
+                </div>
+                <div *ngIf="employee.devicePermissions.length > 0"
+                     class="p-col-3">
+                    <h5 class="expanded-row">Devices</h5>
+                    <ng-container *ngFor="let device of employee.devicePermissions">
+                        <p-tag class="p-2" value="{{device}}"></p-tag>
+                    </ng-container>
+                </div>
+                <div *ngIf="employee.softwarePermissions.length > 0"
+                     class="p-col-3">
+                    <h5 class="expanded-row">Software</h5>
+                    <ng-container *ngFor="let software of employee.softwarePermissions">
+                        <p-tag class="p-2" value="{{software}}"></p-tag>
+                    </ng-container>
+                </div>
+                <div *ngIf="employee.toolPermissions.length > 0"
+                     class="p-col-3">
+                    <h5 class="expanded-row">Tools</h5>
+                    <ng-container *ngFor="let tool of employee.toolPermissions">
+                        <p-tag class="p-2" value="{{tool}}"></p-tag>
+                    </ng-container>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+
+
+</p-table>
+
+
+<p-dialog header="{{dialogTitle|uppercase}}"
+          [(visible)]="displayDialog"
+          [modal]="true"
+          [style]="{width: '50vw'}"
+          [baseZIndex]="10000"
+          [resizable]="true"
+          [draggable]="true">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-6">
+            <label for="firstname">Firstname</label>
+            <input id="firstname" type="text" pInputText>
+        </div>
+        <div class="p-field p-col-6">
+            <label for="lastname">Lastname</label>
+            <input id="lastname" type="text" pInputText>
+        </div>
+        <div class="p-field p-col-6">
+            <label for="email">Email</label>
+            <input id="email" type="text" pInputText>
+        </div>
+        <div class="p-field p-col-6">
+            <label for="role">Role</label>
+            <p-dropdown id="role"
+                        [options]="roles"
+                        optionLabel="label"></p-dropdown>
+        </div>
+
+    </div>
+</p-dialog>
+
+

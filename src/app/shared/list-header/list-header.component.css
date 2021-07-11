@@ -1,0 +1,12 @@
+::ng-deep .p-toolbar {
+    border: 0 !important;
+}
+
+::ng-deep .t-header-content-wrapper {
+    box-shadow: 2px 2px #d8d6d6;
+}
+
+.module-name {
+    font-size: 3em;
+    color: #b5b5b5;
+}

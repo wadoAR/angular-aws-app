@@ -6,10 +6,12 @@ import {TermsAndConditionsComponent} from './static/terms-and-conditions/terms-a
 import {SupportComponent} from './static/support/support.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {AuthGuard} from './utils/auth-guard.service';
+import {EmployeesComponent} from './employees/employees/employees.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent, canActivate: [AuthGuard]},
   {path: 'support', component: SupportComponent, canActivate: [AuthGuard]},

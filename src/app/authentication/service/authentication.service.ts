@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Properties} from '../../utils/properties';
 import {map} from 'rxjs/operators';
 import {User} from '../../models/user/user';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 export const TOKEN = 'token';
 export const AUTHENTICATED_USER = 'authenticatedUser';
@@ -14,7 +15,7 @@ export const AUTHENTICATED_USER_ID = 'authenticatedUserID';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    private host = new Properties().host;
+    private host = Properties.host;
     public loggedInUser: Observable<any>;
     private loggedInUserSubject: BehaviorSubject<any>;
     private readonly token;
