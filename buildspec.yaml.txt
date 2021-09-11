@@ -1,3 +1,4 @@
+<>Copy
 version: 0.1
 
 phases:
@@ -24,4 +25,4 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist/IAM
+  base-directory: dist\IAM
